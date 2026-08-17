@@ -2,14 +2,6 @@
 
 <div align="center">
 
-![Python](https://img.shields.io/badge/Python-3.11-3776AB?logo=python&logoColor=white)
-![FastAPI](https://img.shields.io/badge/FastAPI-0.111+-009688?logo=fastapi&logoColor=white)
-![Streamlit](https://img.shields.io/badge/Streamlit-1.35+-FF4B4B?logo=streamlit&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-4169E1?logo=postgresql&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker&logoColor=white)
-![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-EE4C2C?logo=pytorch&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-green)
-
 **End-to-end financial time series platform: live data ingestion → feature engineering → ML forecasting → REST API → real-time dashboard.**
 
 [Quick Start](#-quick-start) · [Architecture](#-system-architecture) · [API Docs](#-prediction-api) · [Dashboard](#-real-time-dashboard) · [Models](#-ml-models)
@@ -23,6 +15,7 @@
 - [Overview](#-overview)
 - [System Architecture](#-system-architecture)
 - [Project Structure](#-project-structure)
+- [Model Performance](#-model-performance)
 - [ML Models](#-ml-models)
 - [Docker Services](#-docker-services)
 - [Quick Start](#-quick-start)
@@ -58,53 +51,6 @@ This project is a **production-grade financial time series system** covering the
 </div>
 
 > 💡 If the diagram above doesn't render, open [`system_architecture.svg`](./system_architecture.svg) directly in your browser for the full animated version.
-
-```
-┌─────────────────────────────── DATA LAYER ────────────────────────────────┐
-│                                                                            │
-│   Binance API  ──OHLCV──►  Scheduler  ──raw df──►  Feature Eng.  ──►  PostgreSQL │
-│   (ccxt 4.3+)              (APScheduler)           (25+ indicators)   (port 5432) │
-│                            hourly + daily                                  │
-└────────────────────────────────────────────────────────────────────────────┘
-           │                                          │
-           ▼                                          ▼
-┌──────────────────────────── ML MODEL LAYER ────────────────────────────────┐
-│                                                                            │
-│   GBMForecaster                    TFTForecaster                          │
-│   ├── XGBoost (base)               ├── Temporal Fusion Transformer        │
-│   ├── LightGBM (base)              ├── Quantile output (q10/q50/q90)      │
-│   ├── Ridge (meta-learner)         ├── Walk-Forward CV                    │
-│   ├── Optuna HPO (30 trials)       ├── Optuna HPO                        │
-│   ├── OOF Stacking (5-fold)        └── Checkpoint Ensemble               │
-│   └── Conformal Intervals                                                  │
-│                │                                                           │
-│                └──────── gbm_output/gbm_forecaster.joblib ────────────────│
-└────────────────────────────────────────────────────────────────────────────┘
-           │
-           ▼
-┌─────────────────────────── SERVICE LAYER ──────────────────────────────────┐
-│                                                                            │
-│   FastAPI (port 8000)          Streamlit Dashboard (port 8501)            │
-│   ├── GET  /health             ├── Tab 📊 EDA Live                        │
-│   ├── GET  /models/status      │   ├── Candlestick + MA + Bollinger       │
-│   ├── POST /models/reload      │   ├── Volume · RSI(14) · MACD            │
-│   ├── GET  /data/latest        ├── Tab 🔮 Prediction                     │
-│   ├── POST /predict/gbm  ←─── │   ├── GBM Forecast chart                │
-│   └── POST /predict/tft        │   └── Conformal intervals 80%/90%       │
-│                                └── Tab 📈 Diagnostics                    │
-│   EDA Engine (eda/)                ├── Return distribution               │
-│   ├── OHLCVLoader                  ├── Drawdown · Z-score               │
-│   ├── EDAVisualizer                └── ADF · KPSS · Hurst               │
-│   ├── FeatureEDA                                                          │
-│   ├── StatisticalDiagnostics                                              │
-│   └── BaselineModels                                                      │
-└────────────────────────────────────────────────────────────────────────────┘
-           │
-           ▼
-┌──────────────────────────── CLIENT LAYER ──────────────────────────────────┐
-│  Browser :8501  ·  REST Client :8000  ·  Swagger /docs  ·  Colab (TFT)   │
-└────────────────────────────────────────────────────────────────────────────┘
-```
 
 ### Docker Services
 
@@ -184,9 +130,58 @@ Financial Time Series Forecasting & Anomaly Detection/
 └── README.md
 ```
 
+## 📊 Model Performance
+
+> Metrics evaluated on **hold-out test set** — BTC/USDT · 1d · 7-step recursive forecast.
+
+### GBM Stacking Ensemble
+
+| Metric | Value |
+|--------|-------|
+| **R²** | **0.8021** |
+| **MAE** | 1,385.37 USD |
+| **MSE** | 3,157,646 USD² |
+| **RMSE** | 1,776.98 USD |
+| **MAPE** | 2.17 % |
+| **sMAPE** | 2.14 % |
+| Coverage 80% CI | 63.95 % |
+| Coverage 90% CI | 68.60 % |
+| Winkler Score 80% | 6,481.68 |
+| Winkler Score 90% | 9,249.51 |
+| Test samples (n) | 86 |
+
+**OOF Cross-Validation RMSE** (5-fold):
+
+| Fold | XGBoost | LightGBM |
+|------|---------|----------|
+| 1 | 4,590 | 3,849 |
+| 2 | 5,647 | 7,819 |
+| 3 | 7,879 | 8,737 |
+| 4 | 2,926 | 4,108 |
+| 5 | 2,202 | 2,401 |
+| **Mean** | **4,649** | **5,383** |
+
 ---
 
-## 🤖 ML Models
+### TFT (Temporal Fusion Transformer)
+
+| Metric | Value |
+|--------|-------|
+| **R²** | -6,622.78 ⚠ |
+| **MAE** | 26,157.78 USD |
+| **MSE** | 684,661,505 USD² |
+| **RMSE** | 26,166.04 USD |
+| **MAPE** | 13.30 % *(from training log)* |
+| **sMAPE** | 12.47 % *(from training log)* |
+| Coverage 80% CI | 100.0 % |
+| Coverage 96% CI | 100.0 % |
+| Val Loss (best ckpt) | 6,525.69 |
+| Training epochs | 14 (early stop) |
+
+> **Note:** TFT was trained on local CPU (no GPU) — performance is expected to improve significantly with GPU training on Colab.
+
+---
+
 
 ### GBM Stacking Ensemble (`models/gbm_model.py`)
 
