@@ -1,0 +1,44 @@
+======================================================================
+  STATISTICAL DIAGNOSTICS REPORT
+  Symbol: BTC/USDT  |  Timeframe: 1d
+  Period: 2024-09-05 -> 2026-08-16  |  N = 711
+======================================================================
+
+── Descriptive Statistics (Log Returns) ────────────────────
+--------  -------------------
+Mean      0.000118
+Std Dev   0.022972
+Skewness  -0.0859
+Kurtosis  4.6873  (fat tails)
+VaR 5%    -0.035865
+CVaR 5%   -0.051456
+--------  -------------------
+
+── Price level (ADF) ────────────────────────────────────
+  Statistic : -1.6476   p-value: 0.4583
+  Result    : [!!] NON-STATIONARY (p>=0.05 -> cannot reject unit root)
+
+── Log Returns (ADF) ────────────────────────────────────
+  Statistic : -27.4018   p-value: 0.0
+  Result    : [OK] STATIONARY (p<0.05 -> reject unit root)
+
+── Price level (KPSS) ────────────────────────────────────
+  Statistic : 1.0652   p-value: 0.01
+  Result    : [!!] NON-STATIONARY (p<=0.05 -> reject stationarity)
+
+── Log Returns (KPSS) ────────────────────────────────────
+  Statistic : 0.5182   p-value: 0.0376
+  Result    : [!!] NON-STATIONARY (p<=0.05 -> reject stationarity)
+
+── Ljung-Box Autocorrelation Test (lag=10) ─────────
+  Statistic : 6.2876   p-value: 0.7905
+  Result    : [OK] No significant autocorrelation (p>=0.05)
+
+── Jarque-Bera Normality Test ───────────────────────────────
+  Statistic : 640.3275   p-value: 0.0
+  Result    : [!!] NON-NORMAL -- Fat tails / skewness present (p<0.05)
+
+── Hurst Exponent (R/S Analysis) ────────────────────────────
+  Result    : [UP] TRENDING / PERSISTENT (H=0.973 > 0.5)
+
+======================================================================

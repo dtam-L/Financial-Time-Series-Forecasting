@@ -1,0 +1,206 @@
+# ============================================================
+# docker-compose.yml  —  Financial Time Series Forecasting & Anomaly Detection
+#
+# Services (core — luôn start):
+#   postgres   — PostgreSQL database (persistent)
+#   scheduler  — Data ingestion pipeline (APScheduler: hourly + daily)
+#   api        — Prediction REST API (FastAPI, port 8000)
+#   dashboard  — Real-time Streamlit Dashboard (port 8501)
+#
+# Services (on-demand — dùng profile):
+#   trainer_gbm  — Train GBM: docker compose --profile training run --rm trainer_gbm
+#   trainer_tft  — Train TFT: docker compose --profile training run --rm trainer_tft
+#   pgadmin      — DB UI port 5050: docker compose --profile tools up pgadmin
+# ============================================================
+
+version: "3.9"
+
+# ─── Shared defaults ────────────────────────────────────────
+x-app-base: &app-base
+  build:
+    context: .
+    dockerfile: Dockerfile
+  env_file: .env
+  volumes:
+    - ./logs:/app/logs
+    - ./gbm_output:/app/gbm_output
+    - ./tft_output:/app/tft_output
+    - ./reports:/app/reports
+    - ./clean_feature_engineering_data:/app/clean_feature_engineering_data
+  depends_on:
+    postgres:
+      condition: service_healthy
+  restart: unless-stopped
+  networks:
+    - fin_net
+
+# ─── Services ───────────────────────────────────────────────
+services:
+
+  # ── 1. PostgreSQL ─────────────────────────────────────────
+  postgres:
+    image: postgres:16-alpine
+    container_name: fin_postgres
+    env_file: .env
+    environment:
+      POSTGRES_DB: ${DB_NAME:-financial_ts}
+      POSTGRES_USER: ${DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-123456}
+    volumes:
+      # Persistent data
+      - pg_data:/var/lib/postgresql/data
+      # Auto-apply schema on first start
+      - ./data_collection_api/schema.sql:/docker-entrypoint-initdb.d/01_schema.sql:ro
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-postgres} -d ${DB_NAME:-financial_ts}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - fin_net
+
+  # ── 2. Scheduler (Data Ingestion) ─────────────────────────
+  # Chạy liên tục: cập nhật OHLCV mỗi giờ (1h candles)
+  # và mỗi ngày lúc 00:05 UTC (1d candles)
+  scheduler:
+    <<: *app-base
+    container_name: fin_scheduler
+    command: ["python", "-m", "data_collection_api.scheduler"]
+    environment:
+      # Override DB_HOST để trỏ vào service postgres trong Docker network
+      DB_HOST: postgres
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  # ── 3. Trainer — GBM (LightGBM / XGBoost) ────────────────
+  # Chạy on-demand: docker compose run --rm trainer_gbm
+  trainer_gbm:
+    <<: *app-base
+    container_name: fin_trainer_gbm
+    command: ["python", "scripts/run_gbm_local.py"]
+    environment:
+      DB_HOST: postgres
+    restart: "no"          # Chạy một lần rồi exit
+    profiles:
+      - training            # Chỉ start khi: docker compose --profile training up trainer_gbm
+
+  # ── 4. Trainer — TFT (Temporal Fusion Transformer) ────────
+  # Chạy on-demand: docker compose run --rm trainer_tft
+  trainer_tft:
+    <<: *app-base
+    container_name: fin_trainer_tft
+    command: ["python", "scripts/run_tft_local.py"]
+    environment:
+      DB_HOST: postgres
+    volumes:
+      - ./logs:/app/logs
+      - ./tft_output:/app/tft_output
+      - ./lightning_logs:/app/lightning_logs
+      - ./notebooks:/app/notebooks
+      - ./clean_feature_engineering_data:/app/clean_feature_engineering_data
+    restart: "no"
+    profiles:
+      - training
+
+  # ── 5. Prediction API (FastAPI) ──────────────────────────
+  # Luôn start cùng core services.
+  # Swagger UI: http://localhost:8000/docs
+  api:
+    <<: *app-base
+    container_name: fin_api
+    command: [
+      "uvicorn", "api.main:app",
+      "--host", "0.0.0.0",
+      "--port", "8000",
+      "--workers", "2",
+      "--log-level", "info"
+    ]
+    environment:
+      DB_HOST: postgres
+      # Đường dẫn đến file model đã train (mount qua volume gbm_output)
+      GBM_MODEL_PATH: gbm_output/gbm_forecaster.joblib
+      TFT_MODEL_PATH: tft_output/tft_forecaster.joblib
+      API_PORT: "8000"
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+
+  # ── 7. Real-time Dashboard (Streamlit) ──────────────────────
+  # Luôn start cùng core.
+  # Dashboard URL: http://localhost:8501
+  dashboard:
+    <<: *app-base
+    container_name: fin_dashboard
+    command: [
+      "streamlit", "run", "dashboard/app.py",
+      "--server.port=8501",
+      "--server.address=0.0.0.0",
+      "--server.headless=true",
+      "--browser.gatherUsageStats=false",
+      "--theme.base=dark",
+      "--theme.backgroundColor=#0d1117",
+      "--theme.primaryColor=#58a6ff",
+      "--theme.secondaryBackgroundColor=#161b22",
+      "--theme.textColor=#c9d1d9"
+    ]
+    environment:
+      DB_HOST: postgres
+      PREDICT_API_URL: http://api:8000
+    ports:
+      - "8501:8501"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      api:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8501/_stcore/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+
+  # ── 8. PgAdmin (optional UI) ──────────────────────────────
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: fin_pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@local.dev
+      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+    ports:
+      - "5050:80"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    depends_on:
+      - postgres
+    restart: unless-stopped
+    networks:
+      - fin_net
+    profiles:
+      - tools               # docker compose --profile tools up pgadmin
+
+# ─── Volumes ─────────────────────────────────────────────────
+volumes:
+  pg_data:
+    name: fin_pg_data
+  pgadmin_data:
+    name: fin_pgadmin_data
+
+# ─── Networks ────────────────────────────────────────────────
+networks:
+  fin_net:
+    name: fin_network
+    driver: bridge

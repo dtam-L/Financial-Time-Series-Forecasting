@@ -1,0 +1,42 @@
+# ============================================================
+# .dockerignore — loại trừ các file không cần vào image
+# ============================================================
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+*.egg-info/
+
+# Jupyter
+.ipynb_checkpoints/
+notebooks/
+
+# Git
+.git/
+.gitignore
+
+# Env
+.env
+.env.*
+
+# Data & model outputs (mount qua volumes)
+clean_feature_engineering_data/
+colab_data/
+gbm_output/
+tft_output/
+lightning_logs/
+logs/
+reports/
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
