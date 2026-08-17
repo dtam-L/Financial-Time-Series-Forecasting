@@ -53,7 +53,11 @@ This project is a **production-grade financial time series system** covering the
 
 ## 🏗️ System Architecture
 
-> See [`system_architecture.svg`](./system_architecture.svg) for the full animated diagram (open in browser).
+<div align="center">
+  <img src="./system_architecture.svg" alt="System Architecture Diagram" width="100%">
+</div>
+
+> 💡 If the diagram above doesn't render, open [`system_architecture.svg`](./system_architecture.svg) directly in your browser for the full animated version.
 
 ```
 ┌─────────────────────────────── DATA LAYER ────────────────────────────────┐
