@@ -54,5 +54,7 @@ notebooks/1.3.0
 *.hdf5
 *.pkl
 *.pickle
-*.joblib
+!gbm_output/*.joblib
+!tft_output/*.joblib
+
 

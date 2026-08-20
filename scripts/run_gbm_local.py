@@ -238,7 +238,13 @@ def main():
         },
     )
     print(f"\nResults saved -> {result_path}")
+
+    # Save serialized model artifact for API serving
+    model_joblib_path = Path(args.output_dir) / "gbm_forecaster.joblib"
+    forecaster.save_model(str(model_joblib_path))
+    print(f"Model artifact saved -> {model_joblib_path}")
     print("Done!")
+
 
 
 if __name__ == "__main__":
