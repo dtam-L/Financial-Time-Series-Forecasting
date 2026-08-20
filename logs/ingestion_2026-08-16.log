@@ -1,0 +1,167 @@
+2026-08-16 14:05:57.839 | INFO     | data_collection_api.binance_client:__init__:81 - BinanceClient initialised (rate-limit: enabled)
+2026-08-16 14:05:57.930 | WARNING  | data_collection_api.db_manager:_create_engine:78 - Database 'financial_ts' not found. Attempting to create it…
+2026-08-16 14:05:59.108 | INFO     | data_collection_api.db_manager:_create_database:110 - Database 'financial_ts' created successfully.
+2026-08-16 14:05:59.198 | SUCCESS  | data_collection_api.db_manager:_create_engine:91 - Database 'financial_ts' created and connected.
+2026-08-16 14:05:59.205 | WARNING  | data_collection_api.db_manager:_apply_schema:130 - Schema statement skipped (ProgrammingError): CREATE INDEX IF NOT EXISTS idx_ingestion_log_symbol_tf
+    O…
+2026-08-16 14:05:59.206 | WARNING  | data_collection_api.db_manager:_apply_schema:130 - Schema statement skipped (ProgrammingError): RETURN NEW…
+2026-08-16 14:05:59.208 | WARNING  | data_collection_api.db_manager:_apply_schema:130 - Schema statement skipped (ProgrammingError): $$ LANGUAGE plpgsql…
+2026-08-16 14:05:59.212 | WARNING  | data_collection_api.db_manager:_apply_schema:130 - Schema statement skipped (ProgrammingError): CREATE TRIGGER set_updated_at
+    BEFORE UPDATE ON ohlcv_dat…
+2026-08-16 14:05:59.212 | INFO     | data_collection_api.db_manager:_apply_schema:131 - Schema applied (tables & indexes ready).
+2026-08-16 14:05:59.212 | INFO     | data_collection_api.ingestion_pipeline:__init__:53 - IngestionPipeline ready | symbols=['BTC/USDT', 'ETH/USDT'] | timeframes=['1d']
+2026-08-16 14:05:59.213 | INFO     | data_collection_api.ingestion_pipeline:initial_load:117 - ============================================================
+2026-08-16 14:05:59.213 | INFO     | data_collection_api.ingestion_pipeline:initial_load:118 - MODE: initial_load
+2026-08-16 14:05:59.213 | INFO     | data_collection_api.ingestion_pipeline:initial_load:119 -   Start date : 2022-01-01
+2026-08-16 14:05:59.213 | INFO     | data_collection_api.ingestion_pipeline:initial_load:120 -   Symbols    : ['BTC/USDT', 'ETH/USDT']
+2026-08-16 14:05:59.213 | INFO     | data_collection_api.ingestion_pipeline:initial_load:121 -   Timeframes : ['1d']
+2026-08-16 14:05:59.213 | INFO     | data_collection_api.ingestion_pipeline:initial_load:122 - ============================================================
+2026-08-16 14:05:59.213 | INFO     | data_collection_api.ingestion_pipeline:initial_load:126 - ▶ [BTC/USDT] [1d] initial load …
+2026-08-16 14:07:25.807 | INFO     | data_collection_api.binance_client:__init__:81 - BinanceClient initialised (rate-limit: enabled)
+2026-08-16 14:07:25.915 | SUCCESS  | data_collection_api.db_manager:_create_engine:75 - Connected to PostgreSQL: localhost:5432/financial_ts
+2026-08-16 14:07:26.137 | INFO     | data_collection_api.db_manager:_apply_schema:133 - Schema applied (tables, indexes & triggers ready).
+2026-08-16 14:07:26.138 | INFO     | data_collection_api.ingestion_pipeline:__init__:53 - IngestionPipeline ready | symbols=['BTC/USDT', 'ETH/USDT'] | timeframes=['1d']
+2026-08-16 14:07:26.138 | INFO     | data_collection_api.ingestion_pipeline:initial_load:117 - ============================================================
+2026-08-16 14:07:26.138 | INFO     | data_collection_api.ingestion_pipeline:initial_load:118 - MODE: initial_load
+2026-08-16 14:07:26.138 | INFO     | data_collection_api.ingestion_pipeline:initial_load:119 -   Start date : 2022-01-01
+2026-08-16 14:07:26.138 | INFO     | data_collection_api.ingestion_pipeline:initial_load:120 -   Symbols    : ['BTC/USDT', 'ETH/USDT']
+2026-08-16 14:07:26.138 | INFO     | data_collection_api.ingestion_pipeline:initial_load:121 -   Timeframes : ['1d']
+2026-08-16 14:07:26.138 | INFO     | data_collection_api.ingestion_pipeline:initial_load:122 - ============================================================
+2026-08-16 14:07:26.139 | INFO     | data_collection_api.ingestion_pipeline:initial_load:126 - ▶ [BTC/USDT] [1d] initial load …
+2026-08-16 14:07:26.144 | INFO     | data_collection_api.binance_client:fetch_ohlcv:170 - Fetching BTC/USDT 1d from 2022-01-01 to 2026-08-16
+2026-08-16 14:07:26.769 | ERROR    | data_collection_api.binance_client:_call_with_retry:111 - Exchange error: binance requires "secret" credential
+2026-08-16 14:07:26.769 | ERROR    | data_collection_api.ingestion_pipeline:_ingest_one:96 - Failed [BTC/USDT 1d]: binance requires "secret" credential
+2026-08-16 14:09:15.448 | INFO     | data_collection_api.binance_client:__init__:99 - BinanceClient initialised (public REST + ccxt spot)
+2026-08-16 14:09:15.552 | SUCCESS  | data_collection_api.db_manager:_create_engine:75 - Connected to PostgreSQL: localhost:5432/financial_ts
+2026-08-16 14:09:15.616 | INFO     | data_collection_api.db_manager:_apply_schema:133 - Schema applied (tables, indexes & triggers ready).
+2026-08-16 14:09:15.617 | INFO     | data_collection_api.ingestion_pipeline:__init__:53 - IngestionPipeline ready | symbols=['BTC/USDT', 'ETH/USDT'] | timeframes=['1d']
+2026-08-16 14:09:15.617 | INFO     | data_collection_api.ingestion_pipeline:initial_load:117 - ============================================================
+2026-08-16 14:09:15.617 | INFO     | data_collection_api.ingestion_pipeline:initial_load:118 - MODE: initial_load
+2026-08-16 14:09:15.617 | INFO     | data_collection_api.ingestion_pipeline:initial_load:119 -   Start date : 2022-01-01
+2026-08-16 14:09:15.617 | INFO     | data_collection_api.ingestion_pipeline:initial_load:120 -   Symbols    : ['BTC/USDT', 'ETH/USDT']
+2026-08-16 14:09:15.617 | INFO     | data_collection_api.ingestion_pipeline:initial_load:121 -   Timeframes : ['1d']
+2026-08-16 14:09:15.617 | INFO     | data_collection_api.ingestion_pipeline:initial_load:122 - ============================================================
+2026-08-16 14:09:15.617 | INFO     | data_collection_api.ingestion_pipeline:initial_load:126 - ▶ [BTC/USDT] [1d] initial load …
+2026-08-16 14:09:15.622 | INFO     | data_collection_api.binance_client:fetch_ohlcv:214 - Fetching BTC/USDT 1d from 2022-01-01 to 2026-08-16
+2026-08-16 14:09:16.213 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2024-09-27
+2026-08-16 14:09:16.420 | SUCCESS  | data_collection_api.binance_client:fetch_ohlcv:259 - Fetched 1689 candles for BTC/USDT 1d (2022-01-01 → 2026-08-16)
+2026-08-16 14:09:16.949 | INFO     | data_collection_api.db_manager:insert_ohlcv:231 - [BTC/USDT 1d] Upserted 1689 rows → 1689 inserted, 0 updated
+2026-08-16 14:09:16.952 | INFO     | data_collection_api.ingestion_pipeline:initial_load:126 - ▶ [ETH/USDT] [1d] initial load …
+2026-08-16 14:09:16.953 | INFO     | data_collection_api.binance_client:fetch_ohlcv:214 - Fetching ETH/USDT 1d from 2022-01-01 to 2026-08-16
+2026-08-16 14:09:17.232 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2024-09-27
+2026-08-16 14:09:17.506 | SUCCESS  | data_collection_api.binance_client:fetch_ohlcv:259 - Fetched 1689 candles for ETH/USDT 1d (2022-01-01 → 2026-08-16)
+2026-08-16 14:09:18.080 | INFO     | data_collection_api.db_manager:insert_ohlcv:231 - [ETH/USDT 1d] Upserted 1689 rows → 1689 inserted, 0 updated
+2026-08-16 14:09:18.082 | SUCCESS  | data_collection_api.ingestion_pipeline:initial_load:134 - initial_load complete.
+2026-08-16 14:09:18.173 | INFO     | data_collection_api.ingestion_pipeline:_print_summary:212 - 
+  symbol timeframe  total_rows                  earliest                    latest                     last_updated
+BTC/USDT        1d        1689 2022-01-01 00:00:00+00:00 2026-08-16 00:00:00+00:00 2026-08-16 07:09:16.433978+00:00
+ETH/USDT        1d        1689 2022-01-01 00:00:00+00:00 2026-08-16 00:00:00+00:00 2026-08-16 07:09:17.522746+00:00
+2026-08-16 14:09:18.174 | INFO     | data_collection_api.db_manager:close:339 - DatabaseManager connection pool closed.
+2026-08-16 14:09:18.174 | SUCCESS  | __main__:main:116 - Done.
+2026-08-16 14:49:06.068 | INFO     | data_collection_api.binance_client:__init__:99 - BinanceClient initialised (public REST + ccxt spot)
+2026-08-16 14:49:06.167 | SUCCESS  | data_collection_api.db_manager:_create_engine:75 - Connected to PostgreSQL: localhost:5432/financial_ts
+2026-08-16 14:49:06.232 | INFO     | data_collection_api.db_manager:_apply_schema:133 - Schema applied (tables, indexes & triggers ready).
+2026-08-16 14:49:06.232 | INFO     | data_collection_api.ingestion_pipeline:__init__:53 - IngestionPipeline ready | symbols=['BTC/USDT', 'ETH/USDT'] | timeframes=['1h']
+2026-08-16 14:49:06.232 | INFO     | data_collection_api.ingestion_pipeline:initial_load:117 - ============================================================
+2026-08-16 14:49:06.232 | INFO     | data_collection_api.ingestion_pipeline:initial_load:118 - MODE: initial_load
+2026-08-16 14:49:06.232 | INFO     | data_collection_api.ingestion_pipeline:initial_load:119 -   Start date : 2022-01-01
+2026-08-16 14:49:06.232 | INFO     | data_collection_api.ingestion_pipeline:initial_load:120 -   Symbols    : ['BTC/USDT', 'ETH/USDT']
+2026-08-16 14:49:06.232 | INFO     | data_collection_api.ingestion_pipeline:initial_load:121 -   Timeframes : ['1h']
+2026-08-16 14:49:06.233 | INFO     | data_collection_api.ingestion_pipeline:initial_load:122 - ============================================================
+2026-08-16 14:49:06.233 | INFO     | data_collection_api.ingestion_pipeline:initial_load:126 - ▶ [BTC/USDT] [1h] initial load …
+2026-08-16 14:49:06.236 | INFO     | data_collection_api.binance_client:fetch_ohlcv:214 - Fetching BTC/USDT 1h from 2022-01-01 to 2026-08-16
+2026-08-16 14:49:06.772 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2022-02-11
+2026-08-16 14:49:06.882 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2022-03-25
+2026-08-16 14:49:07.151 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2022-05-06
+2026-08-16 14:49:07.421 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2022-06-16
+2026-08-16 14:49:07.536 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2022-07-28
+2026-08-16 14:49:07.650 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2022-09-08
+2026-08-16 14:49:07.765 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2022-10-19
+2026-08-16 14:49:07.877 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2022-11-30
+2026-08-16 14:49:07.990 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2023-01-11
+2026-08-16 14:49:08.101 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2023-02-21
+2026-08-16 14:49:08.213 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2023-04-04
+2026-08-16 14:49:08.332 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2023-05-16
+2026-08-16 14:49:08.443 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2023-06-26
+2026-08-16 14:49:08.555 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2023-08-07
+2026-08-16 14:49:08.664 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2023-09-18
+2026-08-16 14:49:08.850 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2023-10-29
+2026-08-16 14:49:08.962 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2023-12-10
+2026-08-16 14:49:09.072 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2024-01-21
+2026-08-16 14:49:09.260 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2024-03-02
+2026-08-16 14:49:09.376 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2024-04-13
+2026-08-16 14:49:09.492 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2024-05-25
+2026-08-16 14:49:09.604 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2024-07-05
+2026-08-16 14:49:09.794 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2024-08-16
+2026-08-16 14:49:09.905 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2024-09-27
+2026-08-16 14:49:10.017 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2024-11-07
+2026-08-16 14:49:10.207 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2024-12-19
+2026-08-16 14:49:10.318 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2025-01-30
+2026-08-16 14:49:10.431 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2025-03-12
+2026-08-16 14:49:10.617 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2025-04-23
+2026-08-16 14:49:10.729 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2025-06-04
+2026-08-16 14:49:10.841 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2025-07-15
+2026-08-16 14:49:10.954 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2025-08-26
+2026-08-16 14:49:11.066 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2025-10-07
+2026-08-16 14:49:11.256 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2025-11-17
+2026-08-16 14:49:11.445 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2025-12-29
+2026-08-16 14:49:11.553 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2026-02-09
+2026-08-16 14:49:11.821 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2026-03-22
+2026-08-16 14:49:11.934 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2026-05-03
+2026-08-16 14:49:12.047 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2026-06-14
+2026-08-16 14:49:12.158 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2026-07-25
+2026-08-16 14:49:12.377 | SUCCESS  | data_collection_api.binance_client:fetch_ohlcv:259 - Fetched 40519 candles for BTC/USDT 1h (2022-01-01 → 2026-08-16)
+2026-08-16 14:49:24.568 | INFO     | data_collection_api.db_manager:insert_ohlcv:231 - [BTC/USDT 1h] Upserted 40519 rows → 40519 inserted, 0 updated
+2026-08-16 14:49:24.583 | INFO     | data_collection_api.ingestion_pipeline:initial_load:126 - ▶ [ETH/USDT] [1h] initial load …
+2026-08-16 14:49:24.584 | INFO     | data_collection_api.binance_client:fetch_ohlcv:214 - Fetching ETH/USDT 1h from 2022-01-01 to 2026-08-16
+2026-08-16 14:49:24.696 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2022-02-11
+2026-08-16 14:49:24.807 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2022-03-25
+2026-08-16 14:49:24.929 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2022-05-06
+2026-08-16 14:49:25.040 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2022-06-16
+2026-08-16 14:49:25.148 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2022-07-28
+2026-08-16 14:49:25.257 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2022-09-08
+2026-08-16 14:49:25.369 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2022-10-19
+2026-08-16 14:49:25.482 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2022-11-30
+2026-08-16 14:49:25.594 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2023-01-11
+2026-08-16 14:49:25.705 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2023-02-21
+2026-08-16 14:49:25.816 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2023-04-04
+2026-08-16 14:49:25.945 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2023-05-16
+2026-08-16 14:49:26.054 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2023-06-26
+2026-08-16 14:49:26.233 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2023-08-07
+2026-08-16 14:49:26.353 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2023-09-18
+2026-08-16 14:49:26.493 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2023-10-29
+2026-08-16 14:49:26.612 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2023-12-10
+2026-08-16 14:49:26.725 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2024-01-21
+2026-08-16 14:49:26.835 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2024-03-02
+2026-08-16 14:49:26.946 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2024-04-13
+2026-08-16 14:49:27.218 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2024-05-25
+2026-08-16 14:49:27.326 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2024-07-05
+2026-08-16 14:49:27.515 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2024-08-16
+2026-08-16 14:49:27.625 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2024-09-27
+2026-08-16 14:49:27.742 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2024-11-07
+2026-08-16 14:49:27.853 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2024-12-19
+2026-08-16 14:49:27.964 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2025-01-30
+2026-08-16 14:49:28.077 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2025-03-12
+2026-08-16 14:49:28.207 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2025-04-23
+2026-08-16 14:49:28.317 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2025-06-04
+2026-08-16 14:49:28.426 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2025-07-15
+2026-08-16 14:49:28.536 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2025-08-26
+2026-08-16 14:49:29.042 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2025-10-07
+2026-08-16 14:49:29.487 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2025-11-17
+2026-08-16 14:49:29.604 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2025-12-29
+2026-08-16 14:49:29.873 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2026-02-09
+2026-08-16 14:49:30.063 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2026-03-22
+2026-08-16 14:49:30.185 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2026-05-03
+2026-08-16 14:49:30.335 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2026-06-14
+2026-08-16 14:49:30.852 | DEBUG    | data_collection_api.binance_client:fetch_ohlcv:240 -   → fetched 1000 rows, cursor: 2026-07-25
+2026-08-16 14:49:31.071 | SUCCESS  | data_collection_api.binance_client:fetch_ohlcv:259 - Fetched 40519 candles for ETH/USDT 1h (2022-01-01 → 2026-08-16)
+2026-08-16 14:49:43.201 | INFO     | data_collection_api.db_manager:insert_ohlcv:231 - [ETH/USDT 1h] Upserted 40519 rows → 40519 inserted, 0 updated
+2026-08-16 14:49:43.209 | SUCCESS  | data_collection_api.ingestion_pipeline:initial_load:134 - initial_load complete.
+2026-08-16 14:49:43.250 | INFO     | data_collection_api.ingestion_pipeline:_print_summary:212 - 
+  symbol timeframe  total_rows                  earliest                    latest                     last_updated
+BTC/USDT        1d        1689 2022-01-01 00:00:00+00:00 2026-08-16 00:00:00+00:00 2026-08-16 07:09:16.433978+00:00
+BTC/USDT        1h       40519 2022-01-01 00:00:00+00:00 2026-08-16 07:00:00+00:00 2026-08-16 07:49:12.544622+00:00
+ETH/USDT        1d        1689 2022-01-01 00:00:00+00:00 2026-08-16 00:00:00+00:00 2026-08-16 07:09:17.522746+00:00
+ETH/USDT        1h       40519 2022-01-01 00:00:00+00:00 2026-08-16 07:00:00+00:00 2026-08-16 07:49:31.276953+00:00
+2026-08-16 14:49:43.251 | INFO     | data_collection_api.db_manager:close:339 - DatabaseManager connection pool closed.
+2026-08-16 14:49:43.251 | SUCCESS  | __main__:main:116 - Done.

@@ -1,0 +1,132 @@
+2026-08-16 15:54:15.663 | INFO     | __main__:run_eda:80 - ================================================================
+2026-08-16 15:54:15.663 | INFO     | __main__:run_eda:81 - 🔍 EDA PIPELINE STARTED
+2026-08-16 15:54:15.663 | INFO     | __main__:run_eda:82 -    Symbols    : ['BTC/USDT', 'ETH/USDT']
+2026-08-16 15:54:15.663 | INFO     | __main__:run_eda:83 -    Timeframes : ['1d', '1h']
+2026-08-16 15:54:15.664 | INFO     | __main__:run_eda:84 -    Output dir : C:\Users\Dang_Thanh\Desktop\Financial Time Series Forecasting & Anomaly Detection\reports\figures
+2026-08-16 15:54:15.664 | INFO     | __main__:run_eda:85 - ================================================================
+2026-08-16 15:54:15.796 | SUCCESS  | data_collection_api.db_manager:_create_engine:75 - Connected to PostgreSQL: localhost:5432/financial_ts
+2026-08-16 15:54:15.877 | INFO     | data_collection_api.db_manager:_apply_schema:133 - Schema applied (tables, indexes & triggers ready).
+2026-08-16 15:54:15.878 | INFO     | __main__:run_eda:98 - 
+────────────────────────────────────────────────────────
+2026-08-16 15:54:15.878 | INFO     | __main__:run_eda:99 - ▶ Processing: BTC/USDT 1d
+2026-08-16 15:54:15.878 | INFO     | __main__:run_eda:100 - ────────────────────────────────────────────────────────
+2026-08-16 15:54:15.924 | INFO     | eda.data:load:69 - Loaded 730 rows | BTC/USDT 1d | 2024-08-17 → 2026-08-16
+2026-08-16 15:54:15.963 | DEBUG    | eda.data:compute_features:176 - Features computed: 711 rows, 33 columns
+2026-08-16 15:54:15.963 | INFO     | eda.visualized:run_all:197 - Generating EDA charts: BTC/USDT 1d
+2026-08-16 15:54:16.211 | INFO     | data_collection_api.db_manager:close:339 - DatabaseManager connection pool closed.
+2026-08-16 15:54:49.061 | INFO     | __main__:run_eda:80 - ================================================================
+2026-08-16 15:54:49.062 | INFO     | __main__:run_eda:81 - 🔍 EDA PIPELINE STARTED
+2026-08-16 15:54:49.062 | INFO     | __main__:run_eda:82 -    Symbols    : ['BTC/USDT', 'ETH/USDT']
+2026-08-16 15:54:49.062 | INFO     | __main__:run_eda:83 -    Timeframes : ['1d', '1h']
+2026-08-16 15:54:49.062 | INFO     | __main__:run_eda:84 -    Output dir : C:\Users\Dang_Thanh\Desktop\Financial Time Series Forecasting & Anomaly Detection\reports\figures
+2026-08-16 15:54:49.062 | INFO     | __main__:run_eda:85 - ================================================================
+2026-08-16 15:54:49.170 | SUCCESS  | data_collection_api.db_manager:_create_engine:75 - Connected to PostgreSQL: localhost:5432/financial_ts
+2026-08-16 15:54:49.232 | INFO     | data_collection_api.db_manager:_apply_schema:133 - Schema applied (tables, indexes & triggers ready).
+2026-08-16 15:54:49.233 | INFO     | __main__:run_eda:98 - 
+────────────────────────────────────────────────────────
+2026-08-16 15:54:49.233 | INFO     | __main__:run_eda:99 - ▶ Processing: BTC/USDT 1d
+2026-08-16 15:54:49.233 | INFO     | __main__:run_eda:100 - ────────────────────────────────────────────────────────
+2026-08-16 15:54:49.258 | INFO     | eda.data:load:69 - Loaded 730 rows | BTC/USDT 1d | 2024-08-17 → 2026-08-16
+2026-08-16 15:54:49.278 | DEBUG    | eda.data:compute_features:176 - Features computed: 711 rows, 33 columns
+2026-08-16 15:54:49.278 | INFO     | eda.visualized:run_all:197 - Generating EDA charts: BTC/USDT 1d
+2026-08-16 15:54:50.931 | INFO     | eda.visualized:_save:107 -   ✔ Saved: 01_price_volume.png
+2026-08-16 15:54:51.753 | INFO     | eda.visualized:_save:107 -   ✔ Saved: 02_technical_indicators.png
+2026-08-16 15:54:53.017 | INFO     | eda.visualized:_save:107 -   ✔ Saved: 03_return_distribution.png
+2026-08-16 15:54:53.539 | INFO     | eda.visualized:_save:107 -   ✔ Saved: 04_drawdown.png
+2026-08-16 15:54:53.553 | INFO     | data_collection_api.db_manager:close:339 - DatabaseManager connection pool closed.
+2026-08-16 15:55:54.156 | INFO     | __main__:run_eda:80 - ================================================================
+2026-08-16 15:55:54.157 | INFO     | __main__:run_eda:81 - 🔍 EDA PIPELINE STARTED
+2026-08-16 15:55:54.157 | INFO     | __main__:run_eda:82 -    Symbols    : ['BTC/USDT', 'ETH/USDT']
+2026-08-16 15:55:54.157 | INFO     | __main__:run_eda:83 -    Timeframes : ['1d', '1h']
+2026-08-16 15:55:54.157 | INFO     | __main__:run_eda:84 -    Output dir : C:\Users\Dang_Thanh\Desktop\Financial Time Series Forecasting & Anomaly Detection\reports\figures
+2026-08-16 15:55:54.157 | INFO     | __main__:run_eda:85 - ================================================================
+2026-08-16 15:55:54.364 | SUCCESS  | data_collection_api.db_manager:_create_engine:75 - Connected to PostgreSQL: localhost:5432/financial_ts
+2026-08-16 15:55:54.429 | INFO     | data_collection_api.db_manager:_apply_schema:133 - Schema applied (tables, indexes & triggers ready).
+2026-08-16 15:55:54.430 | INFO     | __main__:run_eda:98 - 
+────────────────────────────────────────────────────────
+2026-08-16 15:55:54.430 | INFO     | __main__:run_eda:99 - ▶ Processing: BTC/USDT 1d
+2026-08-16 15:55:54.430 | INFO     | __main__:run_eda:100 - ────────────────────────────────────────────────────────
+2026-08-16 15:55:54.458 | INFO     | eda.data:load:69 - Loaded 730 rows | BTC/USDT 1d | 2024-08-17 → 2026-08-16
+2026-08-16 15:55:54.478 | DEBUG    | eda.data:compute_features:176 - Features computed: 711 rows, 33 columns
+2026-08-16 15:55:54.478 | INFO     | eda.visualized:run_all:197 - Generating EDA charts: BTC/USDT 1d
+2026-08-16 15:55:56.107 | INFO     | eda.visualized:_save:107 -   ✔ Saved: 01_price_volume.png
+2026-08-16 15:55:56.901 | INFO     | eda.visualized:_save:107 -   ✔ Saved: 02_technical_indicators.png
+2026-08-16 15:55:57.986 | INFO     | eda.visualized:_save:107 -   ✔ Saved: 03_return_distribution.png
+2026-08-16 15:55:58.520 | INFO     | eda.visualized:_save:107 -   ✔ Saved: 04_drawdown.png
+2026-08-16 15:55:59.532 | INFO     | eda.visualized:_save:107 -   ✔ Saved: 05_seasonality.png
+2026-08-16 15:55:59.550 | INFO     | data_collection_api.db_manager:close:339 - DatabaseManager connection pool closed.
+2026-08-16 15:56:56.833 | INFO     | __main__:run_eda:80 - ================================================================
+2026-08-16 15:56:56.833 | INFO     | __main__:run_eda:81 - 🔍 EDA PIPELINE STARTED
+2026-08-16 15:56:56.833 | INFO     | __main__:run_eda:82 -    Symbols    : ['BTC/USDT', 'ETH/USDT']
+2026-08-16 15:56:56.834 | INFO     | __main__:run_eda:83 -    Timeframes : ['1d', '1h']
+2026-08-16 15:56:56.834 | INFO     | __main__:run_eda:84 -    Output dir : C:\Users\Dang_Thanh\Desktop\Financial Time Series Forecasting & Anomaly Detection\reports\figures
+2026-08-16 15:56:56.834 | INFO     | __main__:run_eda:85 - ================================================================
+2026-08-16 15:56:57.067 | SUCCESS  | data_collection_api.db_manager:_create_engine:75 - Connected to PostgreSQL: localhost:5432/financial_ts
+2026-08-16 15:56:57.154 | INFO     | data_collection_api.db_manager:_apply_schema:133 - Schema applied (tables, indexes & triggers ready).
+2026-08-16 15:56:57.155 | INFO     | __main__:run_eda:98 - 
+────────────────────────────────────────────────────────
+2026-08-16 15:56:57.156 | INFO     | __main__:run_eda:99 - ▶ Processing: BTC/USDT 1d
+2026-08-16 15:56:57.156 | INFO     | __main__:run_eda:100 - ────────────────────────────────────────────────────────
+2026-08-16 15:56:57.189 | INFO     | eda.data:load:69 - Loaded 730 rows | BTC/USDT 1d | 2024-08-17 → 2026-08-16
+2026-08-16 15:56:57.221 | DEBUG    | eda.data:compute_features:176 - Features computed: 711 rows, 33 columns
+2026-08-16 15:56:57.221 | INFO     | eda.visualized:run_all:197 - Generating EDA charts: BTC/USDT 1d
+2026-08-16 15:56:59.004 | INFO     | eda.visualized:_save:107 -   ✔ Saved: 01_price_volume.png
+2026-08-16 15:56:59.819 | INFO     | eda.visualized:_save:107 -   ✔ Saved: 02_technical_indicators.png
+2026-08-16 15:57:00.883 | INFO     | eda.visualized:_save:107 -   ✔ Saved: 03_return_distribution.png
+2026-08-16 15:57:01.425 | INFO     | eda.visualized:_save:107 -   ✔ Saved: 04_drawdown.png
+2026-08-16 15:57:02.226 | INFO     | eda.visualized:_save:107 -   ✔ Saved: 05_seasonality.png
+2026-08-16 15:57:03.579 | INFO     | eda.visualized:_save:107 -   ✔ Saved: 06_anomaly_signals.png
+2026-08-16 15:57:04.173 | INFO     | eda.visualized:_save:107 -   ✔ Saved: 07_market_regime.png
+2026-08-16 15:57:04.173 | SUCCESS  | eda.visualized:run_all:211 - All charts saved → C:\Users\Dang_Thanh\Desktop\Financial Time Series Forecasting & Anomaly Detection\reports\figures\BTC_USDT_1d
+2026-08-16 15:57:04.174 | INFO     | eda.diagnostics:run:64 - Running statistical diagnostics: BTC/USDT 1d
+2026-08-16 15:57:04.302 | INFO     | data_collection_api.db_manager:close:339 - DatabaseManager connection pool closed.
+2026-08-16 15:58:19.345 | INFO     | __main__:run_eda:80 - ================================================================
+2026-08-16 15:58:19.347 | INFO     | __main__:run_eda:81 - 🔍 EDA PIPELINE STARTED
+2026-08-16 15:58:19.348 | INFO     | __main__:run_eda:82 -    Symbols    : ['BTC/USDT', 'ETH/USDT']
+2026-08-16 15:58:19.348 | INFO     | __main__:run_eda:83 -    Timeframes : ['1d', '1h']
+2026-08-16 15:58:19.348 | INFO     | __main__:run_eda:84 -    Output dir : C:\Users\Dang_Thanh\Desktop\Financial Time Series Forecasting & Anomaly Detection\reports\figures
+2026-08-16 15:58:19.348 | INFO     | __main__:run_eda:85 - ================================================================
+2026-08-16 15:58:19.513 | SUCCESS  | data_collection_api.db_manager:_create_engine:75 - Connected to PostgreSQL: localhost:5432/financial_ts
+2026-08-16 15:58:19.619 | INFO     | data_collection_api.db_manager:_apply_schema:133 - Schema applied (tables, indexes & triggers ready).
+2026-08-16 15:58:19.621 | INFO     | __main__:run_eda:98 - 
+────────────────────────────────────────────────────────
+2026-08-16 15:58:19.621 | INFO     | __main__:run_eda:99 - ▶ Processing: BTC/USDT 1d
+2026-08-16 15:58:19.621 | INFO     | __main__:run_eda:100 - ────────────────────────────────────────────────────────
+2026-08-16 15:58:19.668 | INFO     | eda.data:load:69 - Loaded 730 rows | BTC/USDT 1d | 2024-08-17 → 2026-08-16
+2026-08-16 15:58:19.709 | DEBUG    | eda.data:compute_features:176 - Features computed: 711 rows, 33 columns
+2026-08-16 15:58:19.709 | INFO     | eda.visualized:run_all:197 - Generating EDA charts: BTC/USDT 1d
+2026-08-16 15:58:21.737 | INFO     | eda.visualized:_save:107 -   ✔ Saved: 01_price_volume.png
+2026-08-16 15:58:22.547 | INFO     | eda.visualized:_save:107 -   ✔ Saved: 02_technical_indicators.png
+2026-08-16 15:58:23.870 | INFO     | eda.visualized:_save:107 -   ✔ Saved: 03_return_distribution.png
+2026-08-16 15:58:24.462 | INFO     | eda.visualized:_save:107 -   ✔ Saved: 04_drawdown.png
+2026-08-16 15:58:25.622 | INFO     | eda.visualized:_save:107 -   ✔ Saved: 05_seasonality.png
+2026-08-16 15:58:27.901 | INFO     | eda.visualized:_save:107 -   ✔ Saved: 06_anomaly_signals.png
+2026-08-16 15:58:29.058 | INFO     | eda.visualized:_save:107 -   ✔ Saved: 07_market_regime.png
+2026-08-16 15:58:29.059 | SUCCESS  | eda.visualized:run_all:211 - All charts saved → C:\Users\Dang_Thanh\Desktop\Financial Time Series Forecasting & Anomaly Detection\reports\figures\BTC_USDT_1d
+2026-08-16 15:58:29.060 | INFO     | eda.diagnostics:run:64 - Running statistical diagnostics: BTC/USDT 1d
+2026-08-16 15:58:29.261 | INFO     | eda.diagnostics:save_report:214 -   ✔ Saved: diagnostics_report.txt
+2026-08-16 15:58:30.896 | INFO     | eda.modelling:run:198 -   ✔ Saved: 09_baseline_forecast.png
+2026-08-16 15:58:30.897 | INFO     | eda.modelling:run:201 - 
+Model                   RMSE          MAE      MAPE%
+2026-08-16 15:58:30.897 | INFO     | eda.modelling:run:202 - ----------------------------------------------------
+2026-08-16 15:58:30.897 | INFO     | eda.modelling:run:204 - Naive (RW)            914.32       715.53      1.134%
+2026-08-16 15:58:30.897 | INFO     | eda.modelling:run:204 - SMA 7               1,132.65       916.94      1.457%
+2026-08-16 15:58:30.898 | INFO     | eda.modelling:run:204 - SMA 25              1,875.20     1,512.95      2.407%
+2026-08-16 15:58:30.898 | INFO     | eda.modelling:run:204 - EWM (14)            1,320.95     1,074.39      1.714%
+2026-08-16 15:58:30.898 | INFO     | __main__:run_eda:98 - 
+────────────────────────────────────────────────────────
+2026-08-16 15:58:30.898 | INFO     | __main__:run_eda:99 - ▶ Processing: BTC/USDT 1h
+2026-08-16 15:58:30.899 | INFO     | __main__:run_eda:100 - ────────────────────────────────────────────────────────
+2026-08-16 15:58:30.988 | INFO     | eda.data:load:69 - Loaded 4320 rows | BTC/USDT 1h | 2026-02-17 → 2026-08-16
+2026-08-16 15:58:31.017 | DEBUG    | eda.data:compute_features:176 - Features computed: 4301 rows, 33 columns
+2026-08-16 15:58:31.017 | INFO     | eda.visualized:run_all:197 - Generating EDA charts: BTC/USDT 1h
+2026-08-16 15:58:37.269 | INFO     | eda.visualized:_save:107 -   ✔ Saved: 01_price_volume.png
+2026-08-16 15:58:38.050 | INFO     | eda.visualized:_save:107 -   ✔ Saved: 02_technical_indicators.png
+2026-08-16 15:58:39.740 | INFO     | eda.visualized:_save:107 -   ✔ Saved: 03_return_distribution.png
+2026-08-16 15:58:40.485 | INFO     | eda.visualized:_save:107 -   ✔ Saved: 04_drawdown.png
+2026-08-16 15:58:41.926 | INFO     | eda.visualized:_save:107 -   ✔ Saved: 05_seasonality.png
+2026-08-16 15:58:48.015 | INFO     | eda.visualized:_save:107 -   ✔ Saved: 06_anomaly_signals.png
+2026-08-16 15:58:48.752 | INFO     | eda.visualized:_save:107 -   ✔ Saved: 07_market_regime.png
+2026-08-16 15:58:48.753 | SUCCESS  | eda.visualized:run_all:211 - All charts saved → C:\Users\Dang_Thanh\Desktop\Financial Time Series Forecasting & Anomaly Detection\reports\figures\BTC_USDT_1h
+2026-08-16 15:58:48.753 | INFO     | eda.diagnostics:run:64 - Running statistical diagnostics: BTC/USDT 1h
+2026-08-16 15:58:49.678 | INFO     | data_collection_api.db_manager:close:339 - DatabaseManager connection pool closed.

@@ -1,23 +1,5 @@
-"""
-dashboard/charts.py
-===================
-Tất cả Plotly charts cho Real-time Financial Dashboard.
-
-Dark theme nhất quán, interactive, đẹp theo chuẩn TradingView-style.
-
-Charts
-------
-candlestick_chart(df)      — OHLCV + MA7 + MA25 + Bollinger Bands
-volume_chart(df)           — Volume bars (xanh up, đỏ down)
-rsi_chart(df)              — RSI(14) + overbought/oversold zones
-macd_chart(df)             — MACD line + signal + histogram
-forecast_chart(df, pred)   — Lịch sử giá + GBM forecast + CI shading
-return_distribution(df)    — Histogram log returns
-drawdown_chart(df)         — Drawdown curve
-"""
 
 from __future__ import annotations
-
 from typing import Optional, List
 import numpy as np
 import pandas as pd

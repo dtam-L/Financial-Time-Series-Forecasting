@@ -43,23 +43,11 @@ data_raw/**/*.parquet
 # Notebooks checkpoints
 .ipynb_checkpoints/
 
-# Logs
-logs/
-*.log
-# Output folders (plots, results, checkpoints - generated artifacts)
-tft_output/
-gbm_output/
-
-# Training logs
-lightning_logs/
-notebooks/lightning_logs/
-
 # Notebook artifacts
 notebooks/0.44.0
 notebooks/1.3.0
 
-# Model checkpoints and weights
-*.ckpt
+# Model weights (standalone outside output directories)
 *.pt
 *.pth
 *.h5
@@ -67,3 +55,4 @@ notebooks/1.3.0
 *.pkl
 *.pickle
 *.joblib
+

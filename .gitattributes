@@ -5,6 +5,9 @@ tft_output/**                        linguist-generated
 gbm_output/**                        linguist-generated
 lightning_logs/**                    linguist-generated
 notebooks/lightning_logs/**          linguist-generated
+logs/**                              linguist-generated
+*.log                                linguist-generated
+
 
 # ====== Binary image assets (never count as code) ======
 *.png                                linguist-generated

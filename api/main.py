@@ -136,13 +136,6 @@ def _check_db() -> bool:
     tags=["Status"],
 )
 async def health_check() -> HealthResponse:
-    """
-    Kiểm tra trạng thái API, models đã load, và kết nối DB.
-
-    - `status`: **ok** (tất cả sẵn sàng), **degraded** (thiếu model), **error** (nghiêm trọng)
-    - `models_loaded`: dict model_name → bool
-    - `db_connected`: kết nối PostgreSQL có hoạt động không
-    """
     registry = ModelRegistry.get_instance()
     models_loaded = {
         "GBM": registry.gbm_model is not None,
@@ -217,10 +210,6 @@ async def get_latest_candles(
     timeframe: str = Query(default="1d", description="Khung thời gian: 1d, 1h, ..."),
     n: int = Query(default=20, ge=1, le=500, description="Số candles cần lấy"),
 ) -> List[CandleResponse]:
-    """
-    Query PostgreSQL và trả về N candles OHLCV gần nhất.
-    Hữu ích để kiểm tra dữ liệu trong DB.
-    """
     try:
         from api.predict_service import fetch_latest_candles
         return fetch_latest_candles(symbol, timeframe, n)
@@ -242,9 +231,34 @@ async def get_latest_candles(
     tags=["Predict"],
 )
 async def predict_gbm(request: PredictRequest) -> PredictResponse:
+    try:
+        from api.predict_service import predict_gbm as predict_gbm_impl
+        return predict_gbm_impl(request)
+    except RuntimeError as exc:
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail=str(exc),
+        )
+    except Exception as exc:
+        logger.error(f"Lỗi predict GBM: {type(exc).__name__}: {exc}")
+        import traceback
+        traceback.print_exc()
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Lỗi nội bộ: {type(exc).__name__}: {exc}",
+        )
+
+
+@app.post(
+    "/predict/tft",
+    response_model=PredictResponse,
+    summary="Dự báo TFT (Temporal Fusion Transformer)",
+    tags=["Predict"],
+)
+async def predict_tft(request: PredictRequest) -> PredictResponse:
     """
-    Dự báo giá đóng cửa nhiều bước sử dụng **GBM Stacking Ensemble**
-    (XGBoost + LightGBM → Ridge meta-learner) với **Conformal Prediction Intervals**.
+    Dự báo giá đóng cửa nhiều bước sử dụng **Temporal Fusion Transformer**.
+    Model được train với quantile forecasting (predicts median + lower/upper bounds).
 
     ### Cách dùng
 

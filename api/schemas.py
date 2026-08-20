@@ -1,21 +1,4 @@
-"""
-api/schemas.py
-==============
-Pydantic v2 schemas cho Prediction API.
 
-Inbound
--------
-  PredictRequest   : yêu cầu dự đoán (từ DB hoặc candles thủ công)
-  OHLCVRecord      : một candle OHLCV
-
-Outbound
---------
-  ForecastStep     : một bước dự báo (y_pred + conformal intervals)
-  PredictResponse  : toàn bộ kết quả dự báo
-  HealthResponse   : trạng thái API + models
-  ModelStatusResponse : thông tin chi tiết model đã load
-  CandleResponse   : candle từ DB (dùng cho /data/latest)
-"""
 
 from __future__ import annotations
 

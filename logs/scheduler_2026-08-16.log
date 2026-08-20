@@ -1,0 +1,85 @@
+2026-08-16 14:50:05.157 | INFO     | __main__:main:110 - ============================================================
+2026-08-16 14:50:05.157 | INFO     | __main__:main:111 - 🚀 Scheduler started. Jobs:
+2026-08-16 14:50:32.746 | INFO     | __main__:main:110 - ============================================================
+2026-08-16 14:50:32.747 | INFO     | __main__:main:111 - 🚀 Scheduler started. Jobs:
+2026-08-16 14:50:32.747 | INFO     | __main__:main:114 -    [hourly_ohlcv] BTC/ETH 1h OHLCV update — next: unknown
+2026-08-16 14:50:32.747 | INFO     | __main__:main:114 -    [daily_ohlcv] BTC/ETH 1d OHLCV update — next: unknown
+2026-08-16 14:50:32.749 | INFO     | __main__:main:115 - Press Ctrl+C to stop.
+2026-08-16 14:50:32.749 | INFO     | __main__:main:116 - ============================================================
+2026-08-16 14:50:32.749 | INFO     | __main__:main:120 - ▶ Running initial incremental update on startup…
+2026-08-16 14:50:32.757 | INFO     | data_collection_api.binance_client:__init__:99 - BinanceClient initialised (public REST + ccxt spot)
+2026-08-16 14:50:32.858 | SUCCESS  | data_collection_api.db_manager:_create_engine:75 - Connected to PostgreSQL: localhost:5432/financial_ts
+2026-08-16 14:50:32.917 | INFO     | data_collection_api.db_manager:_apply_schema:133 - Schema applied (tables, indexes & triggers ready).
+2026-08-16 14:50:32.918 | INFO     | data_collection_api.ingestion_pipeline:__init__:53 - IngestionPipeline ready | symbols=['BTC/USDT', 'ETH/USDT'] | timeframes=['1d', '1h']
+2026-08-16 14:50:32.919 | INFO     | data_collection_api.ingestion_pipeline:incremental_update:142 - ============================================================
+2026-08-16 14:50:32.919 | INFO     | data_collection_api.ingestion_pipeline:incremental_update:143 - MODE: incremental_update
+2026-08-16 14:50:32.919 | INFO     | data_collection_api.ingestion_pipeline:incremental_update:144 - ============================================================
+2026-08-16 14:50:32.924 | INFO     | data_collection_api.ingestion_pipeline:incremental_update:161 - ▶ [BTC/USDT] [1d] incremental from 2026-08-16 …
+2026-08-16 14:50:32.927 | INFO     | data_collection_api.binance_client:fetch_ohlcv:214 - Fetching BTC/USDT 1d from 2026-08-16 to 2026-08-16
+2026-08-16 14:50:33.296 | WARNING  | data_collection_api.binance_client:fetch_ohlcv:246 - No data returned for BTC/USDT 1d
+2026-08-16 14:50:33.303 | INFO     | data_collection_api.ingestion_pipeline:incremental_update:161 - ▶ [BTC/USDT] [1h] incremental from 2026-08-16 …
+2026-08-16 14:50:33.304 | INFO     | data_collection_api.binance_client:fetch_ohlcv:214 - Fetching BTC/USDT 1h from 2026-08-16 to 2026-08-16
+2026-08-16 14:50:33.397 | WARNING  | data_collection_api.binance_client:fetch_ohlcv:246 - No data returned for BTC/USDT 1h
+2026-08-16 14:50:33.402 | INFO     | data_collection_api.ingestion_pipeline:incremental_update:161 - ▶ [ETH/USDT] [1d] incremental from 2026-08-16 …
+2026-08-16 14:50:33.403 | INFO     | data_collection_api.binance_client:fetch_ohlcv:214 - Fetching ETH/USDT 1d from 2026-08-16 to 2026-08-16
+2026-08-16 14:50:33.494 | WARNING  | data_collection_api.binance_client:fetch_ohlcv:246 - No data returned for ETH/USDT 1d
+2026-08-16 14:50:33.497 | INFO     | data_collection_api.ingestion_pipeline:incremental_update:161 - ▶ [ETH/USDT] [1h] incremental from 2026-08-16 …
+2026-08-16 14:50:33.498 | INFO     | data_collection_api.binance_client:fetch_ohlcv:214 - Fetching ETH/USDT 1h from 2026-08-16 to 2026-08-16
+2026-08-16 14:50:33.593 | WARNING  | data_collection_api.binance_client:fetch_ohlcv:246 - No data returned for ETH/USDT 1h
+2026-08-16 14:50:33.595 | SUCCESS  | data_collection_api.ingestion_pipeline:incremental_update:172 - incremental_update complete.
+2026-08-16 14:50:33.645 | INFO     | data_collection_api.ingestion_pipeline:_print_summary:212 - 
+  symbol timeframe  total_rows                  earliest                    latest                     last_updated
+BTC/USDT        1d        1689 2022-01-01 00:00:00+00:00 2026-08-16 00:00:00+00:00 2026-08-16 07:09:16.433978+00:00
+BTC/USDT        1h       40519 2022-01-01 00:00:00+00:00 2026-08-16 07:00:00+00:00 2026-08-16 07:49:12.544622+00:00
+ETH/USDT        1d        1689 2022-01-01 00:00:00+00:00 2026-08-16 00:00:00+00:00 2026-08-16 07:09:17.522746+00:00
+ETH/USDT        1h       40519 2022-01-01 00:00:00+00:00 2026-08-16 07:00:00+00:00 2026-08-16 07:49:31.276953+00:00
+2026-08-16 14:50:33.646 | INFO     | data_collection_api.db_manager:close:339 - DatabaseManager connection pool closed.
+2026-08-16 14:50:33.646 | SUCCESS  | __main__:main:125 - Startup update complete. Scheduler now active.
+2026-08-16 15:02:00.000 | INFO     | __main__:_job_hourly:62 - ⏰ [SCHEDULER] Hourly job triggered
+2026-08-16 15:02:00.009 | INFO     | data_collection_api.binance_client:__init__:99 - BinanceClient initialised (public REST + ccxt spot)
+2026-08-16 15:02:00.073 | SUCCESS  | data_collection_api.db_manager:_create_engine:75 - Connected to PostgreSQL: localhost:5432/financial_ts
+2026-08-16 15:02:00.136 | INFO     | data_collection_api.db_manager:_apply_schema:133 - Schema applied (tables, indexes & triggers ready).
+2026-08-16 15:02:00.136 | INFO     | data_collection_api.ingestion_pipeline:__init__:53 - IngestionPipeline ready | symbols=['BTC/USDT', 'ETH/USDT'] | timeframes=['1h']
+2026-08-16 15:02:00.136 | INFO     | data_collection_api.ingestion_pipeline:incremental_update:142 - ============================================================
+2026-08-16 15:02:00.137 | INFO     | data_collection_api.ingestion_pipeline:incremental_update:143 - MODE: incremental_update
+2026-08-16 15:02:00.137 | INFO     | data_collection_api.ingestion_pipeline:incremental_update:144 - ============================================================
+2026-08-16 15:02:00.143 | INFO     | data_collection_api.ingestion_pipeline:incremental_update:161 - ▶ [BTC/USDT] [1h] incremental from 2026-08-16 …
+2026-08-16 15:02:00.146 | INFO     | data_collection_api.binance_client:fetch_ohlcv:214 - Fetching BTC/USDT 1h from 2026-08-16 to 2026-08-16
+2026-08-16 15:02:00.571 | SUCCESS  | data_collection_api.binance_client:fetch_ohlcv:259 - Fetched 1 candles for BTC/USDT 1h (2026-08-16 → 2026-08-16)
+2026-08-16 15:02:00.596 | INFO     | data_collection_api.db_manager:insert_ohlcv:231 - [BTC/USDT 1h] Upserted 1 rows → 1 inserted, 0 updated
+2026-08-16 15:02:00.601 | INFO     | data_collection_api.ingestion_pipeline:incremental_update:161 - ▶ [ETH/USDT] [1h] incremental from 2026-08-16 …
+2026-08-16 15:02:00.602 | INFO     | data_collection_api.binance_client:fetch_ohlcv:214 - Fetching ETH/USDT 1h from 2026-08-16 to 2026-08-16
+2026-08-16 15:02:00.698 | SUCCESS  | data_collection_api.binance_client:fetch_ohlcv:259 - Fetched 1 candles for ETH/USDT 1h (2026-08-16 → 2026-08-16)
+2026-08-16 15:02:00.701 | INFO     | data_collection_api.db_manager:insert_ohlcv:231 - [ETH/USDT 1h] Upserted 1 rows → 1 inserted, 0 updated
+2026-08-16 15:02:00.703 | SUCCESS  | data_collection_api.ingestion_pipeline:incremental_update:172 - incremental_update complete.
+2026-08-16 15:02:00.737 | INFO     | data_collection_api.ingestion_pipeline:_print_summary:212 - 
+  symbol timeframe  total_rows                  earliest                    latest                     last_updated
+BTC/USDT        1d        1689 2022-01-01 00:00:00+00:00 2026-08-16 00:00:00+00:00 2026-08-16 07:09:16.433978+00:00
+BTC/USDT        1h       40520 2022-01-01 00:00:00+00:00 2026-08-16 08:00:00+00:00 2026-08-16 08:02:00.577009+00:00
+ETH/USDT        1d        1689 2022-01-01 00:00:00+00:00 2026-08-16 00:00:00+00:00 2026-08-16 07:09:17.522746+00:00
+ETH/USDT        1h       40520 2022-01-01 00:00:00+00:00 2026-08-16 08:00:00+00:00 2026-08-16 08:02:00.700940+00:00
+2026-08-16 15:02:00.738 | INFO     | data_collection_api.db_manager:close:339 - DatabaseManager connection pool closed.
+2026-08-16 16:02:00.030 | INFO     | __main__:_job_hourly:62 - ⏰ [SCHEDULER] Hourly job triggered
+2026-08-16 16:02:00.059 | INFO     | data_collection_api.binance_client:__init__:99 - BinanceClient initialised (public REST + ccxt spot)
+2026-08-16 16:02:00.141 | SUCCESS  | data_collection_api.db_manager:_create_engine:75 - Connected to PostgreSQL: localhost:5432/financial_ts
+2026-08-16 16:02:00.204 | INFO     | data_collection_api.db_manager:_apply_schema:133 - Schema applied (tables, indexes & triggers ready).
+2026-08-16 16:02:00.204 | INFO     | data_collection_api.ingestion_pipeline:__init__:53 - IngestionPipeline ready | symbols=['BTC/USDT', 'ETH/USDT'] | timeframes=['1h']
+2026-08-16 16:02:00.204 | INFO     | data_collection_api.ingestion_pipeline:incremental_update:142 - ============================================================
+2026-08-16 16:02:00.204 | INFO     | data_collection_api.ingestion_pipeline:incremental_update:143 - MODE: incremental_update
+2026-08-16 16:02:00.204 | INFO     | data_collection_api.ingestion_pipeline:incremental_update:144 - ============================================================
+2026-08-16 16:02:00.210 | INFO     | data_collection_api.ingestion_pipeline:incremental_update:161 - ▶ [BTC/USDT] [1h] incremental from 2026-08-16 …
+2026-08-16 16:02:00.213 | INFO     | data_collection_api.binance_client:fetch_ohlcv:214 - Fetching BTC/USDT 1h from 2026-08-16 to 2026-08-16
+2026-08-16 16:02:00.655 | SUCCESS  | data_collection_api.binance_client:fetch_ohlcv:259 - Fetched 1 candles for BTC/USDT 1h (2026-08-16 → 2026-08-16)
+2026-08-16 16:02:00.662 | INFO     | data_collection_api.db_manager:insert_ohlcv:231 - [BTC/USDT 1h] Upserted 1 rows → 1 inserted, 0 updated
+2026-08-16 16:02:00.667 | INFO     | data_collection_api.ingestion_pipeline:incremental_update:161 - ▶ [ETH/USDT] [1h] incremental from 2026-08-16 …
+2026-08-16 16:02:00.668 | INFO     | data_collection_api.binance_client:fetch_ohlcv:214 - Fetching ETH/USDT 1h from 2026-08-16 to 2026-08-16
+2026-08-16 16:02:00.765 | SUCCESS  | data_collection_api.binance_client:fetch_ohlcv:259 - Fetched 1 candles for ETH/USDT 1h (2026-08-16 → 2026-08-16)
+2026-08-16 16:02:00.768 | INFO     | data_collection_api.db_manager:insert_ohlcv:231 - [ETH/USDT 1h] Upserted 1 rows → 1 inserted, 0 updated
+2026-08-16 16:02:00.769 | SUCCESS  | data_collection_api.ingestion_pipeline:incremental_update:172 - incremental_update complete.
+2026-08-16 16:02:00.805 | INFO     | data_collection_api.ingestion_pipeline:_print_summary:212 - 
+  symbol timeframe  total_rows                  earliest                    latest                     last_updated
+BTC/USDT        1d        1689 2022-01-01 00:00:00+00:00 2026-08-16 00:00:00+00:00 2026-08-16 07:09:16.433978+00:00
+BTC/USDT        1h       40521 2022-01-01 00:00:00+00:00 2026-08-16 09:00:00+00:00 2026-08-16 09:02:00.661084+00:00
+ETH/USDT        1d        1689 2022-01-01 00:00:00+00:00 2026-08-16 00:00:00+00:00 2026-08-16 07:09:17.522746+00:00
+ETH/USDT        1h       40521 2022-01-01 00:00:00+00:00 2026-08-16 09:00:00+00:00 2026-08-16 09:02:00.767651+00:00
+2026-08-16 16:02:00.805 | INFO     | data_collection_api.db_manager:close:339 - DatabaseManager connection pool closed.

@@ -1,23 +1,4 @@
-"""
-api/predict_service.py
-======================
-Business logic cho Prediction API.
 
-Luồng xử lý chính
-------------------
-1. Nhận PredictRequest
-2. Lấy dữ liệu:
-   a. from_db=True  → query PostgreSQL, lấy n_history candles gần nhất
-   b. from_db=False → dùng candles từ request body
-3. Chuyển thành DataFrame, chuẩn hoá
-4. Gọi GBMForecaster.recursive_predict()
-5. Trả về PredictResponse
-
-DB query
---------
-Dùng SQLAlchemy engine từ data_collection_api.config (DB_URL),
-không tạo thêm connection mới.
-"""
 
 from __future__ import annotations
 
