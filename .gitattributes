@@ -1,22 +1,46 @@
-# GitHub Linguist overrides - exclude generated/output artifacts from language stats
+# GitHub Linguist overrides - completely exclude generated/artifacts/binary from Language stats
 
-# Output plots and results (generated HTML/JSON)
-tft_output/** linguist-generated=true
-gbm_output/** linguist-generated=true
+# ====== Auto-generated output folders (plots, checkpoints, logs) ======
+tft_output/**                        linguist-generated
+gbm_output/**                        linguist-generated
+lightning_logs/**                    linguist-generated
+notebooks/lightning_logs/**          linguist-generated
 
-# Training logs (YAML/auto-generated)
-lightning_logs/** linguist-generated=true
-notebooks/lightning_logs/** linguist-generated=true
+# ====== Binary image assets (never count as code) ======
+*.png                                linguist-generated
+*.jpg                                linguist-generated
+*.jpeg                               linguist-generated
+*.gif                                linguist-generated
+*.webp                               linguist-generated
+*.bmp                                linguist-generated
+*.ico                                linguist-generated
 
-# Data exports (generated JSON)
-colab_data/** linguist-vendored=true
+# ====== Binary models / serialized data ======
+*.ckpt                               linguist-generated
+*.pt                                 linguist-generated
+*.pth                                linguist-generated
+*.h5                                 linguist-generated
+*.hdf5                               linguist-generated
+*.pkl                                linguist-generated
+*.pickle                             linguist-generated
+*.joblib                             linguist-generated
+*.npz                                linguist-generated
+*.parquet                            linguist-generated
 
-# Figures (images - binary)
-reports/figures/** linguist-generated=true
+# ====== Data exports / figures (generated JSON & images) ======
+colab_data/**                        linguist-vendored
+reports/figures/**                   linguist-generated
 
-# Notebook artifact files (empty placeholders, etc.)
-notebooks/0.44.0 linguist-generated=true
-notebooks/1.3.0 linguist-generated=true
+# ====== Documentation / diagrams ======
+*.svg                                linguist-documentation
+*.md                                 linguist-documentation
+*.txt                                linguist-documentation
 
-# Architecture diagrams (docs, not code)
-*.svg linguist-documentation=true
+# ====== Notebook scratch artifacts ======
+notebooks/0.44.0                     linguist-generated
+notebooks/1.3.0                      linguist-generated
+
+# ====== Docker / infrastructure config (not application code) ======
+Dockerfile                           linguist-detectable=false
+docker-compose.yml                   linguist-detectable=false
+.dockerignore                        linguist-detectable=false
