@@ -46,3 +46,6 @@ data_raw/**/*.parquet
 # Logs
 logs/
 *.log
+# Output plots
+tft_output/*.html
+gbm_output/*.html

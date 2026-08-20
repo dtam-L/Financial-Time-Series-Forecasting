@@ -18,8 +18,16 @@ Trong Docker:
 
 from __future__ import annotations
 
+import os
+import sys
 import time
 from datetime import datetime, timezone
+from pathlib import Path
+
+# Add project root to sys.path
+_PROJECT_ROOT = Path(__file__).resolve().parent.parent
+if str(_PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(_PROJECT_ROOT))
 
 import streamlit as st
 

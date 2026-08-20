@@ -24,6 +24,8 @@ RUN pip install --no-cache-dir --upgrade pip \
 # Copy toàn bộ source code
 COPY . .
 
+ENV PYTHONPATH=/app
+
 # Tạo thư mục logs, outputs (sẽ được mount qua volumes)
 RUN mkdir -p logs gbm_output tft_output reports
 

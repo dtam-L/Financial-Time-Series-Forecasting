@@ -155,6 +155,7 @@ def main():
     print("\n" + "=" * 50)
     print("  TFT EVALUATION RESULTS")
     print("=" * 50)
+    print(f"  R²         : {metrics.get('R2', 0.0):.4f}")
     print(f"  MAE        : {metrics['MAE']:.4f}")
     print(f"  RMSE       : {metrics['RMSE']:.4f}")
     print(f"  MAPE%      : {metrics['MAPE_%']:.2f}%")

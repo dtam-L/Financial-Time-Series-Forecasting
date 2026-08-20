@@ -21,12 +21,20 @@ x-app-base: &app-base
     context: .
     dockerfile: Dockerfile
   env_file: .env
+  environment:
+    PYTHONPATH: /app
   volumes:
     - ./logs:/app/logs
     - ./gbm_output:/app/gbm_output
     - ./tft_output:/app/tft_output
     - ./reports:/app/reports
     - ./clean_feature_engineering_data:/app/clean_feature_engineering_data
+    - ./dashboard:/app/dashboard
+    - ./api:/app/api
+    - ./data_collection_api:/app/data_collection_api
+    - ./models:/app/models
+    - ./eda:/app/eda
+    - ./scripts:/app/scripts
   depends_on:
     postgres:
       condition: service_healthy
