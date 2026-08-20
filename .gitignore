@@ -46,6 +46,24 @@ data_raw/**/*.parquet
 # Logs
 logs/
 *.log
-# Output plots
-tft_output/*.html
-gbm_output/*.html
+# Output folders (plots, results, checkpoints - generated artifacts)
+tft_output/
+gbm_output/
+
+# Training logs
+lightning_logs/
+notebooks/lightning_logs/
+
+# Notebook artifacts
+notebooks/0.44.0
+notebooks/1.3.0
+
+# Model checkpoints and weights
+*.ckpt
+*.pt
+*.pth
+*.h5
+*.hdf5
+*.pkl
+*.pickle
+*.joblib

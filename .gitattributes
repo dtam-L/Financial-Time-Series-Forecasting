@@ -1,0 +1,22 @@
+# GitHub Linguist overrides - exclude generated/output artifacts from language stats
+
+# Output plots and results (generated HTML/JSON)
+tft_output/** linguist-generated=true
+gbm_output/** linguist-generated=true
+
+# Training logs (YAML/auto-generated)
+lightning_logs/** linguist-generated=true
+notebooks/lightning_logs/** linguist-generated=true
+
+# Data exports (generated JSON)
+colab_data/** linguist-vendored=true
+
+# Figures (images - binary)
+reports/figures/** linguist-generated=true
+
+# Notebook artifact files (empty placeholders, etc.)
+notebooks/0.44.0 linguist-generated=true
+notebooks/1.3.0 linguist-generated=true
+
+# Architecture diagrams (docs, not code)
+*.svg linguist-documentation=true
