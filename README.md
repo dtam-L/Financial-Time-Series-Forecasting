@@ -13,6 +13,7 @@
 ## 🗂️ Table of Contents
 
 - [Overview](#-overview)
+- [BA Documents](#-ba-documents)
 - [System Architecture](#-system-architecture)
 - [Project Structure](#-project-structure)
 - [Model Performance](#-model-performance)
@@ -41,6 +42,20 @@ This project is a **production-grade financial time series system** covering the
 
 **Supported assets:** `BTC/USDT`, `ETH/USDT` (extensible to any CCXT-compatible symbol)  
 **Supported timeframes:** `1d`, `1h` (extensible)
+
+---
+
+## 📚 BA Documents
+
+Business Analysis documentation (Vietnamese) lives in [`docs/`](./docs/README.md):
+
+| Document | Content |
+| :--- | :--- |
+| [SRS](./docs/01-SRS.md) | Business objectives & KPIs, stakeholders, functional / non-functional requirements, business rules, gap analysis |
+| [User Stories & MoSCoW](./docs/02-user-stories.md) | Epics, user stories, acceptance criteria, priorities, traceability matrix |
+| [Use Cases](./docs/03-use-cases.md) | Use-case diagram & detailed use-case specifications |
+| [Business Process](./docs/04-business-process.md) | As-is / to-be processes, ingestion & model lifecycle, prediction sequence, state diagrams |
+| [ERD & Data Model](./docs/05-data-model.md) | ERD, data dictionary, feature catalog, API data contract, model artifacts |
 
 ---
 
